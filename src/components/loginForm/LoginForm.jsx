@@ -13,7 +13,6 @@ const LoginForm = props => {
       ...form,
       [e.target.name]: e.target.value,
     };
-    console.log("on update", nextFormState);
     setForm(nextFormState);
   };
 
