@@ -97,7 +97,6 @@ export const useLoginFormValidator = form => {
   };
 
   return {
-    touchErrors,
     validateForm,
     onBlurField,
     errors,

@@ -9,8 +9,7 @@ const LoginForm = props => {
     password: "",
     confirmPassword: "",
   });
-  const { errors, validateForm, onBlurField, touchErrors } =
-    useLoginFormValidator(form);
+  const { errors, validateForm, onBlurField } = useLoginFormValidator(form);
 
   const onUpdateField = e => {
     const field = e.target.name;
