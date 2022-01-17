@@ -16,6 +16,16 @@
   padding: 0.5rem;
 }
 
+.formFieldError {
+  border: 1px solid #e11d48;
+}
+
+.formFieldErrorMessage {
+  display: inline-block;
+  margin: 0.25rem 0 0 0;
+  color: #e11d48;
+}
+
 .formActions {
   display: flex;
   justify-content: flex-end;
