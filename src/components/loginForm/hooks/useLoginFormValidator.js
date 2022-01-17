@@ -35,7 +35,7 @@ export const useLoginFormValidator = form => {
     },
   });
 
-  const validateForm = (form, errors, forceTouchErrors = false) => {
+  const validateForm = ({ form, field, errors, forceTouchErrors = false }) => {
     let isValid = true;
 
     let nextErrors = {
@@ -48,21 +48,24 @@ export const useLoginFormValidator = form => {
 
     const { email, password, confirmPassword } = form;
 
-    if (nextErrors.email.dirty) {
+    if (nextErrors.email.dirty && (field ? field === "email" : true)) {
       const emailMessage = emailValidator(email, form);
       nextErrors.email.error = !!emailMessage;
       nextErrors.email.message = emailMessage;
       if (!!emailMessage) isValid = false;
     }
 
-    if (nextErrors.password.dirty) {
+    if (nextErrors.password.dirty && (field ? field === "password" : true)) {
       const passwordMessage = passwordValidator(password, form);
       nextErrors.password.error = !!passwordMessage;
       nextErrors.password.message = passwordMessage;
       if (!!passwordMessage) isValid = false;
     }
 
-    if (nextErrors.confirmPassword.dirty) {
+    if (
+      nextErrors.confirmPassword.dirty &&
+      (field ? field === "confirmPassword" : true)
+    ) {
       const confirmPasswordMessage = confirmPasswordValidator(
         confirmPassword,
         form
@@ -93,7 +96,7 @@ export const useLoginFormValidator = form => {
       },
     };
 
-    validateForm(form, updatedErrors);
+    validateForm({ form, field, errors: updatedErrors });
   };
 
   return {

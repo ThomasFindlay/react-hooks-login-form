@@ -18,12 +18,17 @@ const LoginForm = props => {
       [field]: e.target.value,
     };
     setForm(nextFormState);
-    if (errors[field].dirty) validateForm(nextFormState, errors);
+    if (errors[field].dirty)
+      validateForm({
+        form: nextFormState,
+        errors,
+        field,
+      });
   };
 
   const onSubmitForm = e => {
     e.preventDefault();
-    const { isValid } = validateForm(form, errors, true);
+    const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
     if (!isValid) return;
     alert(JSON.stringify(form, null, 2));
   };
