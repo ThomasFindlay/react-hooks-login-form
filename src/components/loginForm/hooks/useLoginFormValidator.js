@@ -39,7 +39,7 @@ export const useLoginFormValidator = form => {
     let isValid = true;
 
     // Create a deep copy of the errors
-    const nextErrors = JSON.parse(JSON.stringify(errors));
+    let nextErrors = JSON.parse(JSON.stringify(errors));
 
     // Force validate all the fields
     if (forceTouchErrors) {
